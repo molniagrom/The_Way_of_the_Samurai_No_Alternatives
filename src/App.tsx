@@ -1,33 +1,6 @@
 import {type CSSProperties, useEffect, useState} from "react"
 import './App.css'
-
-// Тип для вложения (например, ссылка на файл)
-type Attachment = {
-    url: string;
-};
-
-// Тип для атрибутов трека (название и список вложений)
-type TrackAttributes = {
-    title: string;
-    attachments: Attachment[];
-};
-
-// Основной тип для трека, включающий ID и атрибуты
-type Track = {
-    id: string;
-    attributes: TrackAttributes;
-};
-
-type TrackDetailsResource = {
-    id: string;
-    attributes: TrackDetailsAttributes;
-};
-
-type TrackDetailsAttributes = {
-    title: string;
-    lyrics: string | null;
-    attachments: Attachment[];
-};
+import type {Track, TrackDetailsResource} from "./types/types.ts";
 
 export function App() {
 
@@ -82,9 +55,9 @@ export function App() {
             <h2>Track Details</h2>
             {!selectedTrackID && <span>No selected track</span>}
             {selectedTrackID && !selectedTrack && <span>Loading...</span>}
-            {selectedTrack && <div style={{border: "1px solid red"}}>
-                <h4 style={{border: "1px solid yellow"}}>{selectedTrack.attributes.title}</h4>
-                <p style={{border: "1px solid orange"}}>
+            {selectedTrack && <div>
+                <h4>{selectedTrack.attributes.title}</h4>
+                <p>
                     {selectedTrack.attributes.lyrics ?? 'Lyrics are not available for this track.'}
                 </p>
             </div>}
