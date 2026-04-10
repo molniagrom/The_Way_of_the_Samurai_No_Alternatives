@@ -1,5 +1,6 @@
 import {type CSSProperties, useEffect, useState} from "react";
-import type {Track, TrackDetailsResource} from "../types/types.ts";
+import type {Track} from "../types/types.ts";
+import {getTracks} from "../dal/api.ts";
 
 type PropsPlaylist = {
     selectedTrackID: string | null
@@ -9,30 +10,14 @@ type PropsPlaylist = {
 export function Playlist({selectedTrackID, onTrackSelect}: PropsPlaylist) {
     console.log("Playlist")
     const [tracks, setTracks] = useState<Track[] | null>(null)
-    const [_, setSelectedTracks] = useState<TrackDetailsResource | null>(null)
 
     useEffect(() => {
-        fetch('https://musicfun.it-incubator.app/api/1.0/playlists/tracks?pageSize=5', {
-            headers: {
-                "api-key": "7375c246-b206-4c43-a2ae-0010f7388790",
-            }
-        })
-            .then(res => res.json())
+        getTracks()
             .then(json => setTracks(json.data))
-
-
     }, []);
 
     const handleSelectTrack = (trackId: string) => {
         onTrackSelect(trackId)
-
-        fetch('https://musicfun.it-incubator.app/api/1.0/playlists/tracks/' + trackId, {
-            headers: {
-                "api-key": "7375c246-b206-4c43-a2ae-0010f7388790",
-            }
-        })
-            .then(res => res.json())
-            .then(json => setSelectedTracks(json.data))
     }
 
     return (
