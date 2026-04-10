@@ -7,7 +7,7 @@ type PropsPlaylist = {
 }
 
 export function Playlist({selectedTrackID, onTrackSelect}: PropsPlaylist) {
-
+    console.log("Playlist")
     const [tracks, setTracks] = useState<Track[] | null>(null)
     const [_, setSelectedTracks] = useState<TrackDetailsResource | null>(null)
 

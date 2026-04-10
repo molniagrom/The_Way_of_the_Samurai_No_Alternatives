@@ -4,6 +4,7 @@ import {TrackDetails} from "../TrackDetails/TrackDetails";
 import {useState} from "react";
 
 export function MainPage() {
+    console.log("MainPage")
     const [selectedTrackID, setSelectedTracksID] = useState<string | null>(null)
 
     const handleTrackSelect = (trackId: string) => {

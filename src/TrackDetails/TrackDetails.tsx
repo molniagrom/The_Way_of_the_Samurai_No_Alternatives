@@ -6,6 +6,8 @@ type PropsTrackDetails = {
 }
 
 export function TrackDetails({selectedTrackID}: PropsTrackDetails) {
+    console.log("TrackDetails")
+
     const [selectedTrack, setSelectedTracks] = useState<TrackDetailsResource | null>(null)
 
     useEffect(() => {
