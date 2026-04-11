@@ -1,6 +1,4 @@
-import type {TrackDetailsResource} from "../../types/types.ts";
-import {useEffect, useState} from "react";
-import {getTrack} from "../../dal/api.ts";
+import {useTrack} from "../../bll/useTrack.ts";
 
 type PropsTrackDetails = {
     selectedTrackID: string | null
@@ -8,14 +6,8 @@ type PropsTrackDetails = {
 
 export function TrackDetails({selectedTrackID}: PropsTrackDetails) {
     console.log("TrackDetails")
-    const [selectedTrack, setSelectedTracks] = useState<TrackDetailsResource | null>(null)
+    const {selectedTrack} = useTrack(selectedTrackID)
 
-    useEffect(() => {
-        if (!selectedTrackID) return
-
-        getTrack(selectedTrackID)
-            .then(json => setSelectedTracks(json.data))
-    }, [selectedTrackID]);
 
     return (
         <div>

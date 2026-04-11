@@ -1,6 +1,5 @@
-import {type CSSProperties, useEffect, useState} from "react";
-import type {Track} from "../../types/types.ts";
-import {getTracks} from "../../dal/api.ts";
+import {type CSSProperties} from "react";
+import {useTracks} from "../../bll/useTracks.tsx";
 
 type PropsPlaylist = {
     selectedTrackID: string | null
@@ -9,12 +8,8 @@ type PropsPlaylist = {
 
 export function Playlist({selectedTrackID, onTrackSelect}: PropsPlaylist) {
     console.log("Playlist")
-    const [tracks, setTracks] = useState<Track[] | null>(null)
+    const {tracks} = useTracks()
 
-    useEffect(() => {
-        getTracks()
-            .then(json => setTracks(json.data))
-    }, []);
 
     const handleSelectTrack = (trackId: string) => {
         onTrackSelect(trackId)

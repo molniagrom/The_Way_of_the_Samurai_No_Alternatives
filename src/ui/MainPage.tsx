@@ -1,15 +1,12 @@
 import {PageTitle} from "./PageTitle/PageTitle";
 import {Playlist} from "./Playlist/Playlist";
 import {TrackDetails} from "./TrackDetails/TrackDetails";
-import {useState} from "react";
+import {useTrackSelection} from "../bll/useTrackSelection.tsx";
 
 export function MainPage() {
     console.log("MainPage")
-    const [selectedTrackID, setSelectedTracksID] = useState<string | null>(null)
+    const {selectedTrackID, handleTrackSelect} = useTrackSelection()
 
-    const handleTrackSelect = (trackId: string) => {
-        setSelectedTracksID(trackId)
-    }
 
     return (
         <div>
