@@ -1,6 +1,6 @@
 import {type CSSProperties, useEffect, useState} from "react";
-import type {Track} from "../types/types.ts";
-import {getTracks} from "../dal/api.ts";
+import type {Track} from "../../types/types.ts";
+import {getTracks} from "../../dal/api.ts";
 
 type PropsPlaylist = {
     selectedTrackID: string | null
