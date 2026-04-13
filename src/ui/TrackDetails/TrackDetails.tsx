@@ -1,4 +1,5 @@
 import {useTrack} from "../../bll/useTrack.ts";
+import s from "./TrackDetails.module.css"
 
 type PropsTrackDetails = {
     selectedTrackID: string | null
@@ -10,7 +11,7 @@ export function TrackDetails({selectedTrackID}: PropsTrackDetails) {
 
 
     return (
-        <div>
+        <div className={s.track}>
             <h2>Track Details</h2>
             {!selectedTrackID && <span>No selected track</span>}
             {selectedTrackID && !selectedTrack && <span>Loading...</span>}

@@ -1,5 +1,6 @@
 import type {Track} from "../../types/types.ts";
 import s from "./TrackItem.module.css"
+import clsx from "clsx";
 
 type Props = {
     track: Track
@@ -8,10 +9,10 @@ type Props = {
 }
 
 export function TrackItem({track, isSelected, onTrackSelect}: Props) {
-    let classNames = s.track
-    if (isSelected) {
-        classNames += " " + s.selected
-    }
+    let classNames = clsx({
+        [s.track] : true,
+        [s.selected]: isSelected,
+    })
 
     return (
         <li className={classNames}>
