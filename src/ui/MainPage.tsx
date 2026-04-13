@@ -1,7 +1,7 @@
 import {PageTitle} from "./PageTitle/PageTitle";
 import {Playlist} from "./Playlist/Playlist";
 import {TrackDetails} from "./TrackDetails/TrackDetails";
-import {useTrackSelection} from "../bll/useTrackSelection.tsx";
+import {useTrackSelection} from "../bll/useTrackSelection.ts";
 
 export function MainPage() {
     console.log("MainPage")
