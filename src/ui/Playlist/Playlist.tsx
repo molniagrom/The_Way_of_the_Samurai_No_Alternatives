@@ -1,5 +1,6 @@
 import {useTracks} from "../../bll/useTracks.ts";
 import {TrackItem} from "./TrackItem.tsx";
+import s from "./Playlist.module.css"
 
 type PropsPlaylist = {
     selectedTrackID: string | null
@@ -14,7 +15,7 @@ export function Playlist({selectedTrackID, onTrackSelect}: PropsPlaylist) {
         <div>
             {tracks === null && <span>Loading...</span>}
             {tracks?.length === 0 && <span>No tracks</span>}
-            <ul>
+            <ul className={s.tracks}>
                 {tracks?.map((track) => (
                     <TrackItem
                         key={track.id}

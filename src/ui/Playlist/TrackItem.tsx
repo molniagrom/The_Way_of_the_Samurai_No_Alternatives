@@ -1,5 +1,5 @@
-import {type CSSProperties} from "react";
 import type {Track} from "../../types/types.ts";
+import s from "./TrackItem.module.css"
 
 type Props = {
     track: Track
@@ -8,13 +8,13 @@ type Props = {
 }
 
 export function TrackItem({track, isSelected, onTrackSelect}: Props) {
-    const style: CSSProperties = {}
+    let classNames = s.track
     if (isSelected) {
-        style.outline = "1px solid green"
+        classNames += " " + s.selected
     }
 
     return (
-        <li style={style}>
+        <li className={classNames}>
             <div onClick={() => onTrackSelect(track.id)}>{track.attributes.title}</div>
             <audio controls src={track.attributes.attachments[0].url}></audio>
         </li>
